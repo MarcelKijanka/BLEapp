@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">BLEapp</string>
+
+    <string name="refresh_reload">Refresh</string>
 </resources>

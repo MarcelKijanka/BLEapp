@@ -2,7 +2,7 @@ package com.marcelkijanka.bleapp.app
 
 import android.app.Application
 import com.marcelkijanka.bleapp.search.di.SearchKoinModuleFactory
-import com.marcelkijanka.bleapp.util.extensions.BLEModuleFactory
+import com.marcelkijanka.bleapp.shared.di.BLEModuleFactory
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 

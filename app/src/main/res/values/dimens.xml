@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Margins -->
+    <dimen name="margin_default_0.25">0.5dp</dimen>
+    <dimen name="margin_default_0.5">1dp</dimen>
+    <dimen name="margin_default_0">2dp</dimen>
+    <dimen name="margin_default_1">4dp</dimen>
+    <dimen name="margin_default_2">8dp</dimen>
+    <dimen name="margin_default_3">12dp</dimen>
+    <dimen name="margin_default_4">16dp</dimen>
+    <dimen name="margin_default_5">24dp</dimen>
+    <dimen name="margin_default_6">32dp</dimen>
+    <dimen name="margin_default_7">64dp</dimen>
+
+</resources>
