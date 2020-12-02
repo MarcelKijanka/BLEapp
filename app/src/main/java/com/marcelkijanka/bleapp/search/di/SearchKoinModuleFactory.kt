@@ -6,17 +6,10 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 object SearchKoinModuleFactory {
-
     fun create() = module{
         viewModel {
             SearchViewModel(
                 devicesRepository = get()
-            )
-        }
-
-        factory{
-            DevicesRepository(
-                source = get()
             )
         }
     }

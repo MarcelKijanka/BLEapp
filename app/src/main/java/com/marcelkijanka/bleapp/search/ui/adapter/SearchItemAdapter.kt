@@ -51,10 +51,12 @@ class SearchItemAdapter(
         private val binding: DeviceItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(device: Device, onDeviceClick: onDeviceClickListener) {
-            binding.apply {
+            with(binding) {
                 deviceName.text = device.name
                 deviceMac.text = device.macAddress
                 deviceRssi.text = device.rssi.toString()
+
+                root.setOnClickListener{onDeviceClick(device)}
             }
         }
     }

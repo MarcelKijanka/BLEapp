@@ -4,10 +4,10 @@
 
     <uses-permission
         android:name="android.permission.ACCESS_COARSE_LOCATION"
-        android:maxSdkVersion="22"/>
+        android:maxSdkVersion="22" />
     <uses-permission
         android:name="android.permission.ACCESS_FINE_LOCATION"
-        android:maxSdkVersion="22"/>
+        android:maxSdkVersion="22" />
 
     <application
         android:name=".app.App"
@@ -17,6 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BLEapp">
+        <activity android:name=".details.ui.DetailsActivity"></activity>
+
         <activity android:name=".search.ui.SearchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -15,17 +15,12 @@ import io.reactivex.disposables.Disposable
 class SearchViewModel(
     private val devicesRepository: DevicesRepository
 ): ViewModel() {
-    private val devices: Observable<ScanResult> = devicesRepository.scan()
     private var disposable: Disposable? = null
-
-    fun onDeviceClick(device: Device) {
-        //TODO: Observer device
-    }
 
     fun reloadButtonClick(adapter: SearchItemAdapter): Boolean {
         val state = (disposable == null) || (disposable?.isDisposed == true)
         if (state) {
-            disposable = devices
+            disposable = devicesRepository.scan()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     adapter.addDevice(it.deviceModel)
@@ -34,6 +29,11 @@ class SearchViewModel(
             disposable?.dispose()
 
         return state
+    }
+
+    fun stop(){
+        disposable?.dispose()
+        disposable = null
     }
 
     override fun onCleared() {

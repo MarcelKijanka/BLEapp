@@ -1,8 +1,10 @@
 package com.marcelkijanka.bleapp.app
 
 import android.app.Application
+import com.marcelkijanka.bleapp.details.di.DetailsKoinModuleFactory
 import com.marcelkijanka.bleapp.search.di.SearchKoinModuleFactory
 import com.marcelkijanka.bleapp.shared.di.BLEModuleFactory
+import com.marcelkijanka.bleapp.shared.di.DeviceRepositoryModuleFactory
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -15,7 +17,9 @@ class App: Application() {
             modules(
                     listOf(
                             SearchKoinModuleFactory.create(),
-                            BLEModuleFactory.create()
+                            DetailsKoinModuleFactory.create(),
+                            BLEModuleFactory.create(),
+                            DeviceRepositoryModuleFactory.create()
                     )
             )
         }

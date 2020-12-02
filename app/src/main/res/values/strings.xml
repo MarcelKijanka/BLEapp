@@ -2,4 +2,6 @@
     <string name="app_name">BLEapp</string>
 
     <string name="refresh_reload">Refresh</string>
+    <string name="title_activity_details">DetailsActivity</string>
+    <string name="please_wait">Please wait</string>
 </resources>
