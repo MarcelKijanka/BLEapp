@@ -29,15 +29,14 @@ class SearchItemAdapter(
     override fun getItemCount() = devices.count()
 
     fun addDevice(device: Device) {
-        devices.firstOrNull { it.macAddress.equals(device.macAddress) }
+
+        devices.firstOrNull { it.equals(device) }
             ?.let { deviceOnList ->
-                Log.d("SEARCH-ADAPTER", "Already on list")
+                deviceOnList.name = device.name
+                deviceOnList.rssi = device.rssi
             }
-            ?: run {
-                with(devices) { add(device) }
-                notifyDataSetChanged()
-            }
-        devices.add(device)
+            ?: devices.add(device)
+        notifyDataSetChanged()
     }
 
     private fun createBinding(parent: ViewGroup): DeviceItemBinding {
@@ -55,6 +54,7 @@ class SearchItemAdapter(
             binding.apply {
                 deviceName.text = device.name
                 deviceMac.text = device.macAddress
+                deviceRssi.text = device.rssi.toString()
             }
         }
     }

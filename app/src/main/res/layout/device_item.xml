@@ -24,10 +24,19 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_default_4"
                 android:textStyle="bold"
-                tools:text="TextView"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="1234:1234:1234:1234"/>
+
+            <TextView
+                android:id="@+id/device_rssi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_default_4"
+                app:layout_constraintBottom_toTopOf="@id/device_name"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="-123"/>
 
             <TextView
                 android:id="@+id/device_name"

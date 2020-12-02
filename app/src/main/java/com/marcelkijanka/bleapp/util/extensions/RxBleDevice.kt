@@ -5,4 +5,4 @@ import com.polidea.rxandroidble2.RxBleDevice
 import com.polidea.rxandroidble2.scan.ScanResult
 
 val ScanResult.deviceModel: Device
-    get() = Device(this.bleDevice.macAddress, this.bleDevice.name)
+    get() = Device(this.bleDevice.macAddress, this.bleDevice.name, this.rssi)
