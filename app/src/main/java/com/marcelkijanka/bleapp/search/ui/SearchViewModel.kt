@@ -19,26 +19,26 @@ class SearchViewModel(
     private var disposable: Disposable? = null
 
     fun onDeviceClick(device: Device) {
-
+        //TODO: Observer device
     }
 
-    fun reloadButtonClick(adapter: SearchItemAdapter): Boolean{
-        if(disposable == null) {
-            disposable = devicesRepository.scan()
+    fun reloadButtonClick(adapter: SearchItemAdapter): Boolean {
+        val state = (disposable == null) || (disposable?.isDisposed == true)
+        if (state) {
+            disposable = devices
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     adapter.addDevice(it.deviceModel)
                 }, { it.printStackTrace() })
-        }
-        else{
+        } else
             disposable?.dispose()
-            disposable = null
-        }
-        return disposable != null
+
+        return state
     }
 
     override fun onCleared() {
         super.onCleared()
         disposable?.dispose()
+        disposable = null
     }
 }
