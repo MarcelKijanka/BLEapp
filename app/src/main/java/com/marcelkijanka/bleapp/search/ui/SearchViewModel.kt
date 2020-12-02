@@ -1,6 +1,5 @@
 package com.marcelkijanka.bleapp.search.ui
 
-import android.bluetooth.BluetoothClass
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.marcelkijanka.bleapp.search.ui.adapter.SearchItemAdapter
@@ -17,26 +16,29 @@ class SearchViewModel(
     private val devicesRepository: DevicesRepository
 ): ViewModel() {
     private val devices: Observable<ScanResult> = devicesRepository.scan()
+    private var disposable: Disposable? = null
 
-    fun onDeviceClick(device: Device){
+    fun onDeviceClick(device: Device) {
 
     }
 
-    fun reloadButtonClick(adapter: SearchItemAdapter){
-        devicesRepository.scan()
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({
-                adapter.addDevice(it.deviceModel)
-            },{it.printStackTrace()})
+    fun reloadButtonClick(adapter: SearchItemAdapter): Boolean{
+        if(disposable == null) {
+            disposable = devicesRepository.scan()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    adapter.addDevice(it.deviceModel)
+                }, { it.printStackTrace() })
+        }
+        else{
+            disposable?.dispose()
+            disposable = null
+        }
+        return disposable != null
     }
 
-    private fun dispose() {
-        scanDisposable = null
-    }
-
-    private var scanDisposable: Disposable? = null
-
-    private fun onScanFailure(throwable: Throwable) {
-        if (throwable is BleScanException) throwable.printStackTrace()
+    override fun onCleared() {
+        super.onCleared()
+        disposable?.dispose()
     }
 }

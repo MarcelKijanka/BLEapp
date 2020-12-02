@@ -3,7 +3,6 @@ package com.marcelkijanka.bleapp.search.ui
 import android.Manifest
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.marcelkijanka.bleapp.R
 import com.marcelkijanka.bleapp.databinding.ActivitySearchBinding
@@ -33,7 +32,9 @@ class SearchActivity : AppCompatActivity() {
         )
         binding.searchRecyclerview.layoutManager = LinearLayoutManager(applicationContext)
         binding.searchRecyclerview.adapter = searchItemAdapter
-        binding.searchReload.setOnClickListener{viewModel.reloadButtonClick(searchItemAdapter)}
+        binding.searchReload.setOnClickListener{
+            if (viewModel.reloadButtonClick(searchItemAdapter)) binding.searchReload.setImageResource(R.drawable.ic_stop) else binding.searchReload.setImageResource(R.drawable.ic_refresh)
+        }
     }
 
     private fun requestPermissions(){
